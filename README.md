@@ -12,6 +12,12 @@
   <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/fork"><img src="https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate"></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/new?template_name=DiscordPyBotTemplate&template_owner=MaxWasUnavailable">
+    <img src="https://img.shields.io/badge/Use this template-29903b?style=for-the-badge&logo=github" alt="Use this template">
+  </a>
+</p>
+
 ## Features
 
 ### Extensive config system
