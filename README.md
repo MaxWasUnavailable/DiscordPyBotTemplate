@@ -4,12 +4,12 @@
 
 ---
 
-https://img.shields.io/discord/1279890091711398130
-https://img.shields.io/github/v/release/MaxWasUnavailable/DiscordPyBotTemplate
-https://img.shields.io/github/commits-since/MaxWasUnavailable/DiscordPyBotTemplate/latest
-https://img.shields.io/github/last-commit/MaxWasUnavailable/DiscordPyBotTemplate
-https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate
-https://img.shields.io/github/license/MaxWasUnavailable/DiscordPyBotTemplate
+![Discord Server](https://img.shields.io/discord/1279890091711398130)
+![Latest Release](https://img.shields.io/github/v/release/MaxWasUnavailable/DiscordPyBotTemplate)
+![Commits Since Release](https://img.shields.io/github/commits-since/MaxWasUnavailable/DiscordPyBotTemplate/latest)
+![Last Commit](https://img.shields.io/github/last-commit/MaxWasUnavailable/DiscordPyBotTemplate)
+![License](https://img.shields.io/github/license/MaxWasUnavailable/DiscordPyBotTemplate)
+![Forks](https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate)
 
 ## Features
 
