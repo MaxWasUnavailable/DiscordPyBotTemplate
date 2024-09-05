@@ -73,7 +73,7 @@ class ErrorCog(BaseCog):
 
         await ctx.reply(error_message)
 
-        if ctx.author.id == self.bot.owner_id:
+        if self.bot.is_owner(ctx.author):
             await ctx.author.send(f"An error occurred while running the command `{ctx.command.name}`: {error}")
 
     @commands.Cog.listener()
@@ -104,7 +104,7 @@ class ErrorCog(BaseCog):
         except:
             await interaction.followup.send(error_message, ephemeral=True)
 
-        if interaction.user.id == self.bot.owner_id:
+        if self.bot.is_owner(interaction.user):
             await interaction.user.send(
                 f"An error occurred while running the command `{interaction.command.name}`: {error}")
 
