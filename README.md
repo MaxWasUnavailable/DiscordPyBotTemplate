@@ -2,6 +2,15 @@
 
 > A modern, easily extensible Discord bot template written in Python, using the discord.py library.
 
+---
+
+https://img.shields.io/discord/1279890091711398130
+https://img.shields.io/github/v/release/MaxWasUnavailable/DiscordPyBotTemplate
+https://img.shields.io/github/commits-since/MaxWasUnavailable/DiscordPyBotTemplate/latest
+https://img.shields.io/github/last-commit/MaxWasUnavailable/DiscordPyBotTemplate
+https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate
+https://img.shields.io/github/license/MaxWasUnavailable/DiscordPyBotTemplate
+
 ## Features
 
 ### Extensive config system
@@ -25,7 +34,7 @@ A [BotConfig](core/config.py) class is provided to handle reading and parsing th
 the config values through properties. You can extend this class to add your own config values.
 
 > You are not meant to commit the .env file to the repository, and it is ignored by default. Always be wary of
-committing sensitive / secret information to a repository!
+> committing sensitive / secret information to a repository!
 
 ### SQLAlchemy database support
 
@@ -79,3 +88,13 @@ The template includes a few basic extensions that I use in most of my bots. Thes
   bot owner triggers an error, the error message is DM'd to them for easier debugging.
 - command_logging: Very simple cog that logs command usage. Depending on the size of your userbase and frequency of
   commands, you may want to consider disabling/removing this.
+
+## Support
+
+If you need help with the template, have a feature request, or found a bug, feel free to open an issue on the GitHub
+repository. I'll do my best to help you out. For more general questions or discussions, you can join my
+[Discord server](https://discord.gg/8PJeFeMCsu). If you have questions related to the discord.py library, they have an
+excellent [Discord server](https://discord.gg/r3sSKJJ) as well.
+
+This template is provided as-is, and I cannot guarantee that it is 100% bug-free. Always test your changes before
+deploying them to a live bot.
