@@ -3,13 +3,14 @@
 > A modern, easily extensible Discord bot template written in Python, using the discord.py library.
 
 ---
-
-![Discord Server](https://img.shields.io/discord/1279890091711398130)
-![Latest Release](https://img.shields.io/github/v/release/MaxWasUnavailable/DiscordPyBotTemplate)
-![Commits Since Release](https://img.shields.io/github/commits-since/MaxWasUnavailable/DiscordPyBotTemplate/latest)
-![Last Commit](https://img.shields.io/github/last-commit/MaxWasUnavailable/DiscordPyBotTemplate)
-![License](https://img.shields.io/github/license/MaxWasUnavailable/DiscordPyBotTemplate)
-![Forks](https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate)
+<p align="center">
+  <a href="https://discord.gg/8PJeFeMCsu"><img src="https://img.shields.io/discord/1279890091711398130?logo=discord"></a>
+  <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/releases"><img src="https://img.shields.io/github/v/release/MaxWasUnavailable/DiscordPyBotTemplate"></a>
+  <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/commits/master/"><img src="https://img.shields.io/github/commits-since/MaxWasUnavailable/DiscordPyBotTemplate/latest"></a>
+  <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/commits/master/"><img src="https://img.shields.io/github/last-commit/MaxWasUnavailable/DiscordPyBotTemplate"></a>
+  <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/blob/master/LICENSE"><img src="https://img.shields.io/github/license/MaxWasUnavailable/DiscordPyBotTemplate"></a>
+  <a href="https://github.com/MaxWasUnavailable/DiscordPyBotTemplate/fork"><img src="https://img.shields.io/github/forks/MaxWasUnavailable/DiscordPyBotTemplate"></a>
+</p>
 
 ## Features
 
