@@ -24,7 +24,7 @@ sensitive information such as the bot token in the YAML file, however.
 A [BotConfig](core/config.py) class is provided to handle reading and parsing the config, and to provide easy access to
 the config values through properties. You can extend this class to add your own config values.
 
-!> You are not meant to commit the .env file to the repository, and it is ignored by default. Always be wary of
+> You are not meant to commit the .env file to the repository, and it is ignored by default. Always be wary of
 committing sensitive / secret information to a repository!
 
 ### SQLAlchemy database support
