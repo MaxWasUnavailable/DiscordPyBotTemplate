@@ -96,6 +96,37 @@ The template includes a few basic extensions that I use in most of my bots. Thes
 - command_logging: Very simple cog that logs command usage. Depending on the size of your userbase and frequency of
   commands, you may want to consider disabling/removing this.
 
+## Setup
+
+1. Click the
+   "[Use this template](https://github.com/new?template_name=DiscordPyBotTemplate&template_owner=MaxWasUnavailable)"
+   button either at the top of the repository, or at the top of this README to create a new repository from this
+   template.
+2. Clone your new repository to your local machine.
+3. Copy the `.env.example` file to `.env` and fill in the required values. At the very least, you'll need to provide a
+   bot token, which you can generate at the [Discord Developer Portal](https://discord.com/developers/applications).
+   For more documentation on the Discord Developer Portal, see their documentation
+   [here](https://discord.com/developers/docs/intro).
+
+   > Note that the following steps 4 to 6 can be done through an IDE such as PyCharm (community edition is free), which
+   > will make the process significantly easier and prevent you from having to run commands in the terminal.
+
+4. It is strongly recommended to set up a Python virtual environment for your bot. You can do this by running
+   `python3 -m venv venv` in the root of your repository. Activate the virtual environment by running
+   `venv\Scripts\activate` on Windows, or `source venv/bin/activate` on Unix-based systems such as Linux or macOS.
+5. Once you have activated your virtual environment, install the required dependencies by running
+   `pip install -r requirements.txt`.
+6. To run the bot, simply run `python3 main.py`. The bot should start up and will report its status to the console. If
+   you have set up the bot correctly, it should log in to Discord and be ready to use. You can verify this by checking
+   whether your bot is online in a server you have added it to.
+7. You will want to run the `sync` command to sync your command tree. This will let Discord know what commands your bot
+   has, and will allow users to see them in the autocomplete. You can do this by running `!sync` (by default, the prefix
+   is either `@bot_name_here [command]` or `![command]`) in a server your bot is in, or in a DM to the bot.
+8. You can now start developing your own functionality! To add new commands, it is recommended to create a new
+   extension in the `extensions` directory. You can use the provided [core](extensions/core) extension as an example.
+   Don't forget to set up the [\_\_init\_\_.py](extensions/core/__init__.py) file in the new extension so that the bot
+   can set it up! See the linked init file for an example.
+
 ## Support
 
 If you need help with the template, have a feature request, or found a bug, feel free to open an issue on the GitHub
