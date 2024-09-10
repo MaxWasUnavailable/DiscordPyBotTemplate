@@ -2,6 +2,7 @@ from discord import Interaction
 from discord import app_commands
 from discord.app_commands import Choice
 from discord.ext import commands
+from discord.utils import find
 
 from base.base_cog import BaseCog
 from core.bot import MyBot
@@ -90,8 +91,8 @@ class CoreCog(BaseCog):
 
         command_tree = await self.get_command_tree()
 
-        app_command = next((command for command in command_tree if command.id == command_id), None) or next(
-            (command for command in command_tree if command.name.lower() == command_name.lower()), None)
+        app_command = find(lambda command: command.id == command_id or command.name == command_name.lower(),
+                           command_tree)
 
         if app_command is None:
             await interaction.response.send_message(f"Command not found: `{command_name}`.", ephemeral=True)
