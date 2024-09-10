@@ -84,6 +84,8 @@ class CoreCog(BaseCog):
         :param interaction: Interaction.
         :param command_name: Command name.
         """
+        command_name = command_name.lower()
+
         try:
             command_id = int(command_name)
         except ValueError:
@@ -91,8 +93,7 @@ class CoreCog(BaseCog):
 
         command_tree = await self.get_command_tree()
 
-        app_command = find(lambda command: command.id == command_id or command.name == command_name.lower(),
-                           command_tree)
+        app_command = find(lambda command: command.id == command_id or command.name == command_name, command_tree)
 
         if app_command is None:
             await interaction.response.send_message(f"Command not found: `{command_name}`.", ephemeral=True)
