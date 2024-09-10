@@ -5,7 +5,6 @@ from discord.ext import commands
 
 from base.base_cog import BaseCog
 from core.bot import MyBot
-from utils.checks.is_owner import is_owner
 
 
 class CoreCog(BaseCog):
@@ -15,6 +14,15 @@ class CoreCog(BaseCog):
 
     def __init__(self, bot: MyBot) -> None:
         super().__init__(bot)
+        self.command_tree_cache = None
+
+    async def get_command_tree(self) -> list[app_commands.AppCommand]:
+        """
+        Get the command tree.
+        :return: Command tree.
+        """
+        self.command_tree_cache = self.command_tree_cache or await self.bot.tree.fetch_commands()
+        return self.command_tree_cache
 
     async def autocomplete_command_name(self, interaction: Interaction, current: str) -> list[Choice[str]]:
         """
@@ -23,11 +31,8 @@ class CoreCog(BaseCog):
         :param current: Current string.
         :return: List of command names.
         """
-        if not hasattr(CoreCog.autocomplete_command_name, "tree_cache"):
-            CoreCog.autocomplete_command_name.tree_cache = await self.bot.tree.fetch_commands()
-
-        return [Choice(name=command.name, value=str(command.id)) for command in
-                CoreCog.autocomplete_command_name.tree_cache if current.lower() in command.name.lower()]
+        return [Choice(name=command.name, value=str(command.id)) for command in await self.get_command_tree() if
+                current.lower() in command.name.lower()]
 
     @app_commands.command(name="ping", description="Ping the bot.")
     @app_commands.checks.cooldown(2, 60)
@@ -56,6 +61,8 @@ class CoreCog(BaseCog):
             self.logger.info(f"Sync complete.")
             await ctx.send("Sync complete.")
 
+        self.command_tree_cache = None
+
     @commands.command(name="shutdown", description="Shutdown the bot.")
     @commands.is_owner()
     async def shutdown(self, interaction: Interaction) -> None:
@@ -83,13 +90,10 @@ class CoreCog(BaseCog):
         except ValueError:
             command_id = None
 
-        app_command = await self.bot.tree.fetch_command(command_id) if command_id else None
+        command_tree = await self.get_command_tree()
 
-        if app_command is None:
-            for tree_command in await self.bot.tree.fetch_commands():
-                if tree_command.name == command_name:
-                    app_command = tree_command
-                    break
+        app_command = next((command for command in command_tree if command.id == command_id), None) or next(
+            (command for command in command_tree if command.name.lower() == command_name.lower()), None)
 
         if app_command is None:
             await interaction.response.send_message(f"Command not found: `{command_name}`.", ephemeral=True)
