@@ -53,15 +53,13 @@ class CoreCog(BaseCog):
         :param current_server: Whether to sync the current server only.
         """
         if current_server:
-            await self.bot.tree.sync(guild=ctx.guild)
+            self.command_tree_cache = await self.bot.tree.sync(guild=ctx.guild)
             self.logger.info(f"Sync complete for {ctx.guild}.")
             await ctx.send("Sync complete for current server.")
         else:
-            await self.bot.tree.sync()
+            self.command_tree_cache = await self.bot.tree.sync()
             self.logger.info(f"Sync complete.")
             await ctx.send("Sync complete.")
-
-        self.command_tree_cache = None
 
     @commands.command(name="shutdown", description="Shutdown the bot.")
     @commands.is_owner()
