@@ -39,8 +39,7 @@ class CoreCog(BaseCog):
         """
         await interaction.response.send_message(f"Pong! {round(self.bot.latency * 1000)}ms.", ephemeral=True)
 
-    @commands.hybrid_command(name="sync")
-    @app_commands.check(is_owner)
+    @commands.command(name="sync", description="Sync the bot's command tree.")
     @commands.is_owner()
     async def sync(self, ctx: commands.Context, current_server: bool = False) -> None:
         """
@@ -57,10 +56,8 @@ class CoreCog(BaseCog):
             self.logger.info(f"Sync complete.")
             await ctx.send("Sync complete.")
 
-    @app_commands.command(name="shutdown", description="Shutdown the bot.")
-    @app_commands.default_permissions(administrator=True)
-    @app_commands.check(is_owner)
-    @app_commands.guild_only()
+    @commands.command(name="shutdown", description="Shutdown the bot.")
+    @commands.is_owner()
     async def shutdown(self, interaction: Interaction) -> None:
         """
         Shuts down the bot.
