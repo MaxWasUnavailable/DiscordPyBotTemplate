@@ -56,21 +56,20 @@ class CoreCog(BaseCog):
         if current_server:
             self.command_tree_cache = await self.bot.tree.sync(guild=ctx.guild)
             self.logger.info(f"Sync complete for {ctx.guild}.")
-            await ctx.send("Sync complete for current server.")
+            await ctx.reply("Sync complete for current server.")
         else:
             self.command_tree_cache = await self.bot.tree.sync()
             self.logger.info(f"Sync complete.")
-            await ctx.send("Sync complete.")
+            await ctx.reply("Sync complete.")
 
     @commands.command(name="shutdown", description="Shutdown the bot.")
     @commands.is_owner()
-    async def shutdown(self, interaction: Interaction) -> None:
+    async def shutdown(self, ctx: commands.Context) -> None:
         """
         Shuts down the bot.
-        :param interaction: Interaction.
+        :param ctx: Context.
         """
-        self.logger.info(f"Shutdown called by {interaction.user}.")
-        await interaction.response.send_message("Shutting down...", ephemeral=True)
+        await ctx.reply("Shutting down...", ephemeral=True)
 
         await self.bot.close()
 
