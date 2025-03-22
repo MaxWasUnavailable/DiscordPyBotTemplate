@@ -21,6 +21,7 @@ class BotConfig(dict):
         """
         self.__pre_populate()
         super().__init__(config or {})
+        self.post_init()
 
     def __setitem__(self, key: str, value: Any) -> None:
         """
@@ -29,6 +30,12 @@ class BotConfig(dict):
         :param value: The value.
         """
         super().__setitem__(key.lower(), value)
+
+    def post_init(self):
+        """
+        Post-initialisation of the configuration settings.
+        """
+        return self
 
     def update(self, __m, **kwargs):
         """
@@ -130,7 +137,7 @@ class BotConfig(dict):
         :param path: The path to the YAML file.
         :return: The configuration settings.
         """
-        return cls().update_from_yaml(path)
+        return cls().update_from_yaml(path).post_init()
 
     def update_from_dot_env(self, path: str) -> "BotConfig":
         """
@@ -152,7 +159,7 @@ class BotConfig(dict):
         :param path: The path to the .env file.
         :return: The configuration settings.
         """
-        return cls().update_from_dot_env(path)
+        return cls().update_from_dot_env(path).post_init()
 
     def update_from_env(self) -> "BotConfig":
         """
@@ -167,7 +174,7 @@ class BotConfig(dict):
         Load configuration settings from environment variables.
         :return: The configuration settings.
         """
-        return cls().update_from_env()
+        return cls().update_from_env().post_init()
 
     def update_from_dict(self, config: Dict[str, Any]) -> "BotConfig":
         """
@@ -184,7 +191,7 @@ class BotConfig(dict):
         :param config: The dictionary.
         :return: The configuration settings.
         """
-        return cls().update_from_dict(config)
+        return cls().update_from_dict(config).post_init()
 
     @classmethod
     def from_hierarchy(cls, config_path: Optional[str] = None, env_path: Optional[str] = None,
@@ -197,4 +204,4 @@ class BotConfig(dict):
         :return: The configuration settings.
         """
         return cls().update_from_yaml(config_path).update_from_dot_env(env_path).update_from_env().update_from_dict(
-            commandline_args or {})
+            commandline_args or {}).post_init()
