@@ -1,6 +1,0 @@
-extensions:
-  - core
-  - error
-  - command_logging
-logs_path: logs
-debug: false
