@@ -33,7 +33,7 @@ class CoreCog(BaseCog):
         :return: List of command names.
         """
         return [Choice(name=command.name, value=str(command.id)) for command in await self.get_command_tree() if
-                current.lower() in command.name.lower()]
+                current.lower() in command.name.lower()][:25]
 
     @app_commands.command(name="ping", description="Ping the bot.")
     @app_commands.checks.cooldown(2, 60)
