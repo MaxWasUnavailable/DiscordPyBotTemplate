@@ -18,7 +18,7 @@ class MasterLogCog(BaseCog):
         super().__init__(bot)
 
     @app_commands.command(name="set-master-log-channel", description="Set the master log channel.")
-    @is_owner
+    @app_commands.check(is_owner)
     async def set_master_log_channel(self, interaction: discord.Interaction, channel: discord.TextChannel) -> None:
         """
         Set the master log channel.
