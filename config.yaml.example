@@ -2,5 +2,5 @@ extensions:
   - core
   - error
   - command_logging
-logs_path: logs
+logs_path: data/logs
 debug: false
