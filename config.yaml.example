@@ -2,5 +2,7 @@ extensions:
   - core
   - error
   - command_logging
+  - master_log
+  - settings
 logs_path: data/logs
 debug: false
