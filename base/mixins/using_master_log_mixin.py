@@ -1,6 +1,6 @@
 import discord
 
-from extensions.command_logging.command_logging_cog import CommandLoggingCog
+from extensions.master_log.master_log_cog import MasterLogCog
 
 
 class UsingMasterLogMixin:
@@ -9,23 +9,22 @@ class UsingMasterLogMixin:
 
     This mixin needs to be added to a class that also has the BaseCog as a parent.
     """
-    command_logging_cog_cache = None
+    master_log_cog_cache = None
 
-    def get_command_logging_cog(self) -> CommandLoggingCog:
+    def get_master_log_cog(self) -> MasterLogCog:
         """
-        Get the CommandLoggingCog.
-        :return: The CommandLoggingCog.
+        Get the MasterLogCog.
+        :return: The MasterLogCog.
         """
-        if self.command_logging_cog_cache is not None:
-            return self.command_logging_cog_cache
+        if self.master_log_cog_cache is not None:
+            return self.master_log_cog_cache
 
-        command_logging_cog: CommandLoggingCog = self.bot.get_cog(CommandLoggingCog.__name__)
-        if command_logging_cog is None:
-            raise Exception("CommandLoggingCog not found.")
+        master_log_cog: MasterLogCog = self.bot.get_cog(MasterLogCog.__name__)
+        if master_log_cog is None:
+            raise Exception("MasterLogCog not found.")
 
-        self.command_logging_cog_cache = command_logging_cog
-        return command_logging_cog
-
+        self.master_log_cog_cache = master_log_cog
+        return master_log_cog
 
     async def master_log_user_action(self, user: discord.Member, log: str):
         """
@@ -35,7 +34,7 @@ class UsingMasterLogMixin:
         """
         embed = discord.Embed(title="User Action", description=log, color=0x0000ff)
         embed.set_author(name=user.display_name, icon_url=user.avatar.url)
-        await self.get_command_logging_cog().send_master_log(embed=embed)
+        await self.get_master_log_cog().send_master_log(embed=embed)
 
     async def master_log(self, log: str):
         """
@@ -43,7 +42,7 @@ class UsingMasterLogMixin:
         :param log: The log.
         """
         embed = discord.Embed(title="Log", description=log, color=0x0000ff)
-        await self.get_command_logging_cog().send_master_log(embed=embed)
+        await self.get_master_log_cog().send_master_log(embed=embed)
 
     async def master_error_log(self, log: str):
         """
@@ -51,4 +50,4 @@ class UsingMasterLogMixin:
         :param log: The log.
         """
         embed = discord.Embed(title="Error Log", description=log, color=0xff0000)
-        await self.get_command_logging_cog().send_master_log(embed=embed)
+        await self.get_master_log_cog().send_master_log(embed=embed)
