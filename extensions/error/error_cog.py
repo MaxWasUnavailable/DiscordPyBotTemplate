@@ -30,6 +30,8 @@ class ErrorCog(BaseCog):
                                   app_commands.NoPrivateMessage: "This command can only be used in a server.",
                                   app_commands.CheckFailure: "You do not have permission to use this command."}
 
+    shared_error_messages = {}
+
     def __init__(self, bot: MyBot) -> None:
         super().__init__(bot)
 
@@ -41,7 +43,7 @@ class ErrorCog(BaseCog):
         :param error: Error.
         :return: Error message.
         """
-        return self.command_error_messages.get(type(error), "An unknown error occurred.")
+        return self.command_error_messages.get(type(error), self.get_shared_error_message(error))
 
     def get_app_command_error_message(self, error: app_commands.AppCommandError) -> str:
         """
@@ -49,7 +51,15 @@ class ErrorCog(BaseCog):
         :param error: Error.
         :return: Error message.
         """
-        return self.app_command_error_messages.get(type(error), "An unknown error occurred.")
+        return self.app_command_error_messages.get(type(error), self.get_shared_error_message(error))
+
+    def get_shared_error_message(self, error: Exception) -> str:
+        """
+        Get the error message for the given error.
+        :param error: Error.
+        :return: Error message.
+        """
+        return self.shared_error_messages.get(type(error), "An unknown error occurred.")
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: commands.CommandError) -> None:
