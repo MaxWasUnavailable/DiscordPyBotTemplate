@@ -40,6 +40,8 @@ sensitive information such as the bot token in the YAML file, however.
 A [BotConfig](core/config.py) class is provided to handle reading and parsing the config, and to provide easy access to
 the config values through properties. You can extend this class to add your own config values.
 
+> [!WARNING]
+> 
 > You are not meant to commit the .env file to the repository, and it is ignored by default. Always be wary of
 > committing sensitive / secret information to a repository!
 
@@ -95,6 +97,10 @@ The template includes a few basic extensions that I use in most of my bots. Thes
   bot owner triggers an error, the error message is DM'd to them for easier debugging.
 - command_logging: Very simple cog that logs command usage. Depending on the size of your userbase and frequency of
   commands, you may want to consider disabling/removing this.
+- master_log: Adds a simple system to log messages to a master log channel. This is useful for debugging and monitoring
+  the bot's activity.
+- settings: Adds an example cog that allows the bot owner to view and configure "settings" (which are used through the
+  settings database table and helper methods, not to be confused with the config system).
 
 ## Setup
 
