@@ -37,6 +37,9 @@ class DatabaseHandler:
         self.scoped_session = scoped_session(self.database_session_maker)
         self.logger.debug("Scoped session created.")
 
+        Base.query = self.scoped_session.query_property()
+        self.logger.info("Added scoped session to Base.")
+
         self.logger.info("Database connection initialised.")
 
     @property
